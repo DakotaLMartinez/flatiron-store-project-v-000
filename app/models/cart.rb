@@ -1,4 +1,7 @@
 class Cart < ActiveRecord::Base
+  # t.integer "user_id"
+  # t.string  "status",  default: "current"
+  
   has_many :line_items
   has_many :items, through: :line_items
   
