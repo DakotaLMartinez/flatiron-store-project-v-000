@@ -1,6 +1,7 @@
 describe 'Feature Test: Category', :type => :feature do
 
   describe "Item List" do
+    include ActionView::Helpers::NumberHelper
     before(:each) do
       @category = Category.first
       @items = @category.items
@@ -13,7 +14,7 @@ describe 'Feature Test: Category', :type => :feature do
     it "lists all of the items in that category" do
       @items.each do |item|
         expect(page).to have_content item.title
-        expect(page).to have_content "$#{item.price.to_f/100}"
+        expect(page).to have_content "#{number_to_currency(item.price)}"
       end
     end
 
