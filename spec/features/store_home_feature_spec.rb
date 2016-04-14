@@ -1,5 +1,6 @@
 describe 'Feature Test: Store', :type => :feature do
     describe "Category List" do
+      
       it "displays all of the categories as links" do
         visit store_path
         Category.all.each do |category|
@@ -9,6 +10,7 @@ describe 'Feature Test: Store', :type => :feature do
     end
 
     describe "Item List" do
+      include ActionView::Helpers::NumberHelper
       it 'displays all items that have inventory' do
         second_item = Item.second
         second_item.inventory = 0
@@ -19,7 +21,7 @@ describe 'Feature Test: Store', :type => :feature do
             expect(page).to_not have_content item.title
           else
             expect(page).to have_content item.title
-            expect(page).to have_content "$#{item.price.to_f/100}"
+            expect(page).to have_content "#{number_to_currency(item.price)}"
           end
         end
       end

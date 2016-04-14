@@ -21,6 +21,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     Warden.test_mode!
+    Rails.application.load_seed
   end
 
   config.before(:each) do
