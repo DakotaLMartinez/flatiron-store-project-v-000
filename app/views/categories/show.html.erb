@@ -2,6 +2,6 @@
 
 <ul>
 <% @category.items.each do |item| %>
-  <li><%= item.title %> | <%= number_to_currency(item.price) %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></li>
+  <li><%= item.title %> | <%= item_price(item) %> | <%= add_to_cart(item) %></li>
 <% end %>
 </ul>

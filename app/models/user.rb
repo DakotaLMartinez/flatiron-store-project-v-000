@@ -18,14 +18,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :carts
+  belongs_to :current_cart, class_name: "Cart"
   
-  def current_cart 
-    carts.where(status: "current").first
+  def in_your_cart(item)
+    line_item = current_cart.line_items.find_by(item_id: item.id) if current_cart
+    if line_item 
+      line_item.quantity
+    else
+      0
+    end
   end
-  
-  def current_cart=(cart)
-    current_cart.status = "submitted"
-  end
-  
   
 end

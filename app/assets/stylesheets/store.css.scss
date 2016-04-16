@@ -1,3 +1,13 @@
 // Place all the styles related to the store controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.categories {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin: 5px 0 15px;
+}
+
+form.button_to {
+    margin-bottom: 20px;
+}

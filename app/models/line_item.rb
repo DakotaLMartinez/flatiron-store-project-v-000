@@ -13,4 +13,16 @@ class LineItem < ActiveRecord::Base
   def amount 
     quantity * item_price
   end
+  
+  def title 
+    item.title
+  end
+  
+  def inventory 
+    item.inventory
+  end
+  
+  def check_inventory 
+    item.inventory > quantity
+  end
 end
